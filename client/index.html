@@ -27,8 +27,12 @@
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 
+<!-- Header -->
+<div ng-include="'components/header/header.html'"></div>
 <!-- Add your site or application content here -->
 <div ui-view=""></div>
+<!-- Footer -->
+<div ng-include="'components/footer/footer.html'"></div>
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
 <script>
@@ -69,9 +73,17 @@
 <script src="app/magazine/magazine.js"></script>
 <script src="app/product/product.controller.js"></script>
 <script src="app/product/product.js"></script>
+<script src="app/signin/signin.controller.js"></script>
+<script src="app/signin/signin.js"></script>
+<script src="app/signup/signup.controller.js"></script>
+<script src="app/signup/signup.js"></script>
+<script src="app/story/detail/storydetail.controller.js"></script>
 <script src="app/story/story.controller.js"></script>
 <script src="app/story/story.js"></script>
-<script src="components/modal/modal.service.js"></script>
+<script src="app/user/user.controller.js"></script>
+<script src="app/user/user.js"></script>
+<script src="components/footer/footer.controller.js"></script>
+<script src="components/header/header.controller.js"></script>
 <script src="components/navbar/navbar.controller.js"></script>
 <!-- endinjector -->
 <!-- endbuild -->

@@ -1,4 +1,3 @@
-// Generated on 2015-09-23 using generator-angular-fullstack 2.1.1
 'use strict';
 
 module.exports = function (grunt) {
@@ -51,6 +50,22 @@ module.exports = function (grunt) {
 				src: ['server/**/*.js'],
 				title: 'Server',
 				api: true
+			}
+		},
+		bump: {
+			options: {
+				files: ['package.json'],
+				updateConfigs: [],
+				commitMessage: 'Release v%VERSION%',
+				commitFiles: ['package.json'],
+				createTag: true,
+				tagName: 'v%VERSION%',
+				tagMessage: 'Version %VERSION%',
+				push: true,
+				pushTo: 'git_skull',
+				gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d',
+				globalReplace: false,
+				regExp: false
 			}
 		},
 		express: {
