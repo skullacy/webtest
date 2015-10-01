@@ -9,6 +9,8 @@ module.exports = function (grunt) {
 		localConfig = {};
 	}
 
+	var pkg = grunt.file.readJSON('package.json');
+
 	// Load grunt tasks automatically, when needed
 	require('jit-grunt')(grunt, {
 		express: 'grunt-express-server',
@@ -22,15 +24,34 @@ module.exports = function (grunt) {
 	// Time how long tasks take. Can help when optimizing build times
 	require('time-grunt')(grunt);
 
+	grunt.loadNpmTasks('grunt-ngdocs');
+
 	// Define the configuration for all the tasks
 	grunt.initConfig({
 
 		// Project settings
-		pkg: grunt.file.readJSON('package.json'),
+		pkg: pkg,
 		yeoman: {
 			// configurable paths
 			client: require('./bower.json').appPath || 'client',
 			dist: 'dist'
+		},
+		ngdocs: {
+			options: {
+				dest: 'docs',
+				title: 'MWS Documentation v'+pkg.version,
+				sourceLink: true
+			},
+			client: {
+				src: ['client/**/*.js', '!client/**/*.spec.js', '!client/bower_components/**/*.js'],
+				title: 'Client',
+				api: true
+			},
+			server: {
+				src: ['server/**/*.js'],
+				title: 'Server',
+				api: true
+			}
 		},
 		express: {
 			options: {
@@ -174,7 +195,16 @@ module.exports = function (grunt) {
 					]
 				}]
 			},
-			server: '.tmp'
+			server: '.tmp',
+			doc: {
+				files: [{
+					dot: true,
+					src: [
+						'downloaded',
+						'docs'
+					]
+				}]
+			}
 		},
 
 		// Add vendor prefixed styles
@@ -318,7 +348,7 @@ module.exports = function (grunt) {
 		ngtemplates: {
 			options: {
 				// This should be the name of your apps angular module
-				module: 'mydearnestWebApp',
+				module: 'mydearnest',
 				htmlmin: {
 					collapseBooleanAttributes: true,
 					collapseWhitespace: true,
@@ -621,7 +651,6 @@ module.exports = function (grunt) {
 			'wiredep',
 			'autoprefixer',
 			'express:dev',
-			'dgeni',
 			'wait',
 			'open',
 			'watch'
@@ -699,5 +728,10 @@ module.exports = function (grunt) {
 		'newer:jshint',
 		'test',
 		'build'
+	]);
+
+	grunt.registerTask('document', [
+		'clean:doc',
+		'ngdocs'
 	]);
 };
