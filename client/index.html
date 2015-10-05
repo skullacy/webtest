@@ -28,11 +28,11 @@
 <![endif]-->
 
 <!-- Header -->
-<div ng-include="'components/header/header.html'"></div>
+<div ng-include="'components/layout/header/header.html'"></div>
 <!-- Add your site or application content here -->
 <div ui-view=""></div>
 <!-- Footer -->
-<div ng-include="'components/footer/footer.html'"></div>
+<div ng-include="'components/layout/footer/footer.html'"></div>
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
 <script>
@@ -77,14 +77,11 @@
 <script src="app/signin/signin.js"></script>
 <script src="app/signup/signup.controller.js"></script>
 <script src="app/signup/signup.js"></script>
-<script src="app/story/detail/storydetail.controller.js"></script>
 <script src="app/story/story.controller.js"></script>
 <script src="app/story/story.js"></script>
-<script src="app/user/user.controller.js"></script>
-<script src="app/user/user.js"></script>
-<script src="components/footer/footer.controller.js"></script>
-<script src="components/header/header.controller.js"></script>
-<script src="components/navbar/navbar.controller.js"></script>
+<script src="components/config/config.constant.js"></script>
+<script src="components/layout/footer/footer.controller.js"></script>
+<script src="components/layout/header/header.controller.js"></script>
 <!-- endinjector -->
 <!-- endbuild -->
 </body>

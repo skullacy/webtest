@@ -1,0 +1,15 @@
+<div class="navbar navbar-default navbar-static-top" ng-controller="HeaderCtrl">
+	<div class="container">
+		<div class="navbar-header">
+			<div class="navbar-brand">
+				집꾸미기
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<ul class="navbar-nav nav">
+			<li ng-repeat="item in mainMenu"><a href="{{item.src}}">{{item.title}}</a></li>
+		</ul>
+	</div>
+
+</div>
