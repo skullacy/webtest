@@ -8,7 +8,6 @@ module.exports = function (grunt) {
 		localConfig = {};
 	}
 
-	var pkg = grunt.file.readJSON('package.json');
 
 	// Load grunt tasks automatically, when needed
 	require('jit-grunt')(grunt, {
@@ -17,19 +16,21 @@ module.exports = function (grunt) {
 		ngtemplates: 'grunt-angular-templates',
 		cdnify: 'grunt-google-cdn',
 		protractor: 'grunt-protractor-runner',
-		buildcontrol: 'grunt-build-control'
+		buildcontrol: 'grunt-build-control',
+		ngdocs: 'grunt-ngdocs',
+		replace: 'grunt-replace',
+		awsebtdeploy: 'grunt-awsebtdeploy',
+		aws_s3: 'grunt-aws-s3'
 	});
 
 	// Time how long tasks take. Can help when optimizing build times
 	require('time-grunt')(grunt);
 
-	grunt.loadNpmTasks('grunt-ngdocs');
-
 	// Define the configuration for all the tasks
 	grunt.initConfig({
 
 		// Project settings
-		pkg: pkg,
+		pkg: grunt.file.readJSON('package.json'),
 		yeoman: {
 			// configurable paths
 			client: require('./bower.json').appPath || 'client',
@@ -38,7 +39,7 @@ module.exports = function (grunt) {
 		ngdocs: {
 			options: {
 				dest: 'docs',
-				title: 'MWS Documentation v'+pkg.version,
+				title: 'MWS Documentation v<%= pkg.version %>',
 				sourceLink: true
 			},
 			client: {
@@ -68,6 +69,29 @@ module.exports = function (grunt) {
 				regExp: false
 			}
 		},
+		replace: {
+			dist: {
+				options: {
+					patterns: [
+						{
+							match: 'MDN_API_SERVER',
+							replacement: 'http://test.com'
+						},
+						{
+							match: 'MDN_IMAGE_SERVER',
+							replacement: 'http://testimage.com'
+						}
+					]
+				},
+				files: [
+					{
+						expand: true,
+						flatten: true,
+						src: ['client/components/config/config.constant.js'],
+						dest: '.tmp/components/config/'}
+				]
+			},
+		},
 		express: {
 			options: {
 				port: process.env.PORT || 9000
@@ -87,6 +111,63 @@ module.exports = function (grunt) {
 		open: {
 			server: {
 				url: 'http://localhost:<%= express.options.port %>'
+			}
+		},
+		aws: grunt.file.readJSON('./server/config/aws/aws.env.json'),
+		aws_s3: {
+			options: {
+				accessKeyId: '<%= aws.accessKeyId %>',
+				secretAccessKey: '<%= aws.secretAccessKey %>',
+				region: '<%= aws.region %>',
+				uploadConcurrency: 5,
+				downloadConcurrency: 5
+			},
+			staging: {
+				options: {
+					bucket: '<%= aws.s3.configBucket %>',
+					access: 'private'
+				},
+				files: [
+					{
+						action: 'download',
+						dest: 'code/',
+						cwd: './server/config/aws/code/',
+						exclude: ['**/*api*', '**/*image*'],
+						differential: true
+					}
+				]
+			},
+			production: {
+				options: {
+					bucket: '<%= aws.s3.configBucket %>',
+					access: 'private'
+				},
+				files: [
+					{
+						action: 'upload',
+						cwd: './server/config/aws/code/',
+						dest: 'code/',
+						src: ['**'],
+						expand: true
+					}
+				]
+			}
+		},
+		awsebtdeploy: {
+			dist: {
+				options: {
+					applicationName: 'mydearnest-api',
+					environmentCNAME: 'mydearnestadmin-env.elasticbeanstalk.com',
+					region: '<%= aws.region %>',
+					versionLabel: '<%= pkg.version %>',
+					accessKeyId: '<%= aws.accessKeyId %>',
+					secretAccessKey: '<%= aws.secretAccessKey %>',
+					sourceBundle: './<%= pkg.name %>_<%= pkg.version %>.zip',
+					s3: {
+						bucket: 'elasticbeanstalk-ap-northeast-1-483118871478'
+					}
+
+				}
 			}
 		},
 		watch: {
@@ -641,7 +722,7 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('serve', function (target) {
 		if (target === 'dist') {
-			return grunt.task.run(['build', 'env:all', 'env:prod', 'express:prod', 'wait', 'open', 'express-keepalive']);
+			return grunt.task.run(['build', 'env:all', 'env:prod', 'replace:dist', 'express:prod', 'wait', 'open', 'express-keepalive']);
 		}
 
 		if (target === 'debug') {
@@ -653,6 +734,7 @@ module.exports = function (grunt) {
 				'injector',
 				'wiredep',
 				'autoprefixer',
+				'replace:dist',
 				'concurrent:debug'
 			]);
 		}
@@ -664,6 +746,7 @@ module.exports = function (grunt) {
 			'concurrent:server',
 			'injector',
 			'wiredep',
+			'replace:dist',
 			'autoprefixer',
 			'express:dev',
 			'wait',
