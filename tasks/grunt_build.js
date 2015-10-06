@@ -1,7 +1,15 @@
 'use strict';
 
 module.exports = function(grunt) {
-	// Config
+	// Environment Config
+	var allConfig;
+	try {
+		allConfig = require('../server/config/environment/all.js');
+	} catch(e) {
+		allConfig = {};
+	}
+
+	// Grunt Config
 	grunt.config.merge({
 		express: {
 			options: {
@@ -543,6 +551,71 @@ module.exports = function(grunt) {
 					]
 				}
 			}
+		},
+		replace: {
+			dist: {
+				options: {
+					patterns: [
+						{
+							match: 'MDN_API_SERVER',
+							replacement: allConfig.production.server.api
+						},
+						{
+							match: 'MDN_IMAGE_SERVER',
+							replacement: allConfig.production.server.image
+						}
+					]
+				},
+				files: [
+					{
+						expand: true,
+						flatten: true,
+						src: ['client/components/config/config.constant.js'],
+						dest: '.tmp/components/config/'}
+				]
+			},
+			dev: {
+				options: {
+					patterns: [
+						{
+							match: 'MDN_API_SERVER',
+							replacement: allConfig.development.server.api
+						},
+						{
+							match: 'MDN_IMAGE_SERVER',
+							replacement: allConfig.development.server.image
+						}
+					]
+				},
+				files: [
+					{
+						expand: true,
+						flatten: true,
+						src: ['client/components/config/config.constant.js'],
+						dest: '.tmp/components/config/'}
+				]
+			},
+			test: {
+				options: {
+					patterns: [
+						{
+							match: 'MDN_API_SERVER',
+							replacement: allConfig.test.server.api
+						},
+						{
+							match: 'MDN_IMAGE_SERVER',
+							replacement: allConfig.test.server.image
+						}
+					]
+				},
+				files: [
+					{
+						expand: true,
+						flatten: true,
+						src: ['client/components/config/config.constant.js'],
+						dest: '.tmp/components/config/'}
+				]
+			}
 		}
 	});
 
@@ -567,12 +640,11 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('serve', function (target) {
 		if (target === 'dist') {
-			return grunt.task.run(['browserify:dist', 'build', 'env:all', 'env:prod', 'express:prod', 'wait', 'open', 'express-keepalive']);
+			return grunt.task.run(['build', 'env:all', 'env:prod', 'express:prod', 'wait', 'open', 'express-keepalive']);
 		}
 
 		if (target === 'debug') {
 			return grunt.task.run([
-				'browserify:dev',
 				'clean:server',
 				'env:all',
 				'injector:sass',
@@ -585,12 +657,12 @@ module.exports = function(grunt) {
 		}
 
 		grunt.task.run([
-			//'browserify:dev',
 			'clean:server',
 			'env:all',
 			'injector:sass',
 			'concurrent:server',
 			'injector',
+			'replace:dev',
 			'wiredep',
 			'autoprefixer',
 			'express:dev',
@@ -611,6 +683,7 @@ module.exports = function(grunt) {
 		'concurrent:dist',
 		'injector',
 		'wiredep',
+		'replace:dist',
 		'useminPrepare',
 		'autoprefixer',
 		'ngtemplates',

@@ -2,26 +2,12 @@
 var envify = require('envify/custom');
 
 module.exports = function (grunt) {
-	//var localConfig;
-	//try {
-	//	localConfig = require('./server/config/local.env');
-	//} catch(e) {
-	//	localConfig = {};
-	//}
-
-	var localConfig = {};
-
-	//function getConfig() {
-	//	console.log('in getConfig');
-	//	var config;
-	//	try {
-	//		config = require('./server/config/environment');
-	//	} catch (e) {
-	//		console.log(e);
-	//		config = {};
-	//	}
-	//	return config;
-	//}
+	var localConfig;
+	try {
+		localConfig = require('./server/config/local.env');
+	} catch(e) {
+		localConfig = {};
+	}
 
 	// Load grunt tasks automatically, when needed
 	require('jit-grunt')(grunt, {
@@ -75,73 +61,8 @@ module.exports = function (grunt) {
 				globalReplace: false,
 				regExp: false
 			}
-		},
-		browserify: {
-			dev: {
-				files: {
-					'./client/components/config/config.constant.js': ['./client/components/config/config.constant.js.browserify']
-				},
-				options: {
-					alias: {
-						'serverConfig': './server/config/environment'
-					},
-					//browserifyOptions: {
-					//	debug: false
-					//},
-					transform: [envify({
-						NODE_ENV: 'development'
-					})],
-					require: ['./server/config/environment/development.js:./development.js'],
-					banner:'window.'
-				}
-			},
-			//dist: {
-			//	files: {
-			//		'<%= yeoman.client %>/components/config/config.constant.js.browserify': ['<%= yeoman.client %>/components/config/config.constant.js.browserify']
-			//	},
-			//	options: {
-			//		transform: [envify({
-			//			NODE_ENV: 'production'
-			//		})]
-			//	}
-			//},
-			//test: {
-			//	files: {
-			//		'<%= yeoman.client %>/components/config/config.constant.js.browserify': ['<%= yeoman.client %>/components/config/config.constant.js.browserify']
-			//	},
-			//	options: {
-			//		transform: [envify({
-			//			NODE_ENV: 'test'
-			//		})]
-			//	}
-			//}
-		},
-		replace: {
-			dist: {
-				options: {
-					patterns: [
-						{
-							match: 'MDN_API_SERVER',
-							replacement: '<%= env.all.server.api %>'
-						},
-						{
-							match: 'MDN_IMAGE_SERVER',
-							replacement: '<%= env.all.server.image %>'
-						}
-					]
-				},
-				files: [
-					{
-						expand: true,
-						flatten: true,
-						src: ['client/components/config/config.constant.js.browserify'],
-						dest: '.tmp/components/config/'}
-				]
-			},
-		},
-
+		}
 	});
-
 
 	grunt.loadTasks('./tasks');
 
