@@ -27,6 +27,22 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+		compress: {
+			dist: {
+				options: {
+					archive: '<%= pkg.name %>_<%= pkg.version %>.zip',
+					mode: 'zip'
+				},
+				files: [
+					{
+						expand: true,
+						cwd: '<%= yeoman.dist %>/',
+						src: ['**', '.ebextensions/**'],
+						dest: './'
+					}
+				]
+			}
+		},
 		open: {
 			server: {
 				url: 'http://localhost:<%= express.options.port %>'
@@ -643,6 +659,16 @@ module.exports = function(grunt) {
 			return grunt.task.run(['build', 'env:all', 'env:prod', 'express:prod', 'wait', 'open', 'express-keepalive']);
 		}
 
+		if (target && target.indexOf('aws') === 0) {
+			//if (target === 'awsTest') {
+			//	grunt.config.set('compress.dist.options.archive', '<%= pkg.name %>_<%= pkg.version %>t.zip');
+			//	grunt.config.set('awsebtdeploy.dist.options.environmentCNAME', 'mydearnestadmin-test.elasticbeanstalk.com');
+			//	grunt.config.set('awsebtdeploy.dist.options.versionLabel', '<%= pkg.version %>t');
+			//	grunt.config.set('awsebtdeploy.dist.options.sourceBundle', './<%= pkg.name %>_<%= pkg.version %>t.zip');
+			//}
+			return grunt.task.run(['build', 'env:all', 'env:prod', 'express:prod', 'compress:dist', 'awsebtdeploy:dist']);
+		}
+
 		if (target === 'debug') {
 			return grunt.task.run([
 				'clean:server',
@@ -671,6 +697,8 @@ module.exports = function(grunt) {
 			'watch'
 		]);
 	});
+
+
 
 	grunt.registerTask('server', function () {
 		grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');

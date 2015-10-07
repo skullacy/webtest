@@ -46,15 +46,15 @@ module.exports = function(grunt) {
 		awsebtdeploy: {
 			dist: {
 				options: {
-					applicationName: 'mydearnest-api',
-					environmentCNAME: 'mydearnestadmin-env.elasticbeanstalk.com',
+					applicationName: 'test-mydearnest-web',
+					environmentCNAME: 'testmydearnestweb.elasticbeanstalk.com',
 					region: '<%= aws.region %>',
 					versionLabel: '<%= pkg.version %>',
 					accessKeyId: '<%= aws.accessKeyId %>',
 					secretAccessKey: '<%= aws.secretAccessKey %>',
 					sourceBundle: './<%= pkg.name %>_<%= pkg.version %>.zip',
 					s3: {
-						bucket: 'elasticbeanstalk-ap-northeast-1-483118871478'
+						bucket: 'elasticbeanstalk-us-west-2-483118871478'
 					}
 
 				}

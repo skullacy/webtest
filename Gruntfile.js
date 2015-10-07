@@ -21,7 +21,7 @@ module.exports = function (grunt) {
 		replace: 'grunt-replace',
 		awsebtdeploy: 'grunt-awsebtdeploy',
 		aws_s3: 'grunt-aws-s3',
-		browserify: 'grunt-browserify'
+		compress: 'grunt-contrib-compress'
 	});
 
 	// Time how long tasks take. Can help when optimizing build times
