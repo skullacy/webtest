@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc controller
- * @name mydearnest.controller:InteriorpicCtrl
+ * @name InteriorpicCtrl
  * @description
  * 인테리어 사진 컨트롤러
  *

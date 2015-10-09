@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc controller
- * @name mydearnest.controller:ProductCtrl
+ * @name ProductCtrl
  * @description
  * 가구 및 소품 컨트롤러
  *

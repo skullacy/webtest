@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc controller
- * @name mydearnest.controller:SigninCtrl
+ * @name SigninCtrl
  * @description
  * 회원가입 컨트롤러
  *

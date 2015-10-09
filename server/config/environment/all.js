@@ -1,5 +1,7 @@
 'use strict';
 /**
+ * @ngdocs interface
+ * @name all.js
  * @description
  * Config Container.
  * node.js 환경별 설정에 따른 모든 Config을 갖고있음.

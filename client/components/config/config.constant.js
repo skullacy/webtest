@@ -1,7 +1,7 @@
 'use strict';
 /**
  * @ngdoc object
- * @name mydearnest.object:MdnConfig
+ * @name MdnConfig
  * @description
  * App Config을 정의한다.
  *

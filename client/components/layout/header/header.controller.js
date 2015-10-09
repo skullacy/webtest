@@ -1,7 +1,7 @@
 'use strict';
 /**
  * @ngdoc controller
- * @name mydearnest.controller:HeaderCtrl
+ * @name HeaderCtrl
  * @description
  * 헤더 컨트롤러
  *

@@ -13,7 +13,7 @@ module.exports = function(grunt) {
 			groupTitle: 'MWS Documentation v<%= pkg.version %>',
 			groups: [
 				{
-					groupTitle: 'Client',
+					groupTitle: 'Client Docs',
 					groupId: 'client',
 					groupIcon: 'icon-folder',
 					sections: [
@@ -33,6 +33,18 @@ module.exports = function(grunt) {
 							docs: ['client/bower_components/**/*.js']
 						}
 
+					]
+				},
+				{
+					groupTitle: 'Server Docs',
+					groupId: 'server',
+					groupIcon: 'icon-folder',
+					sections: [
+						{
+							id: 'configuration',
+							title: 'Configuration',
+							docs: ['server/config/**/*.js']
+						}
 					]
 				}
 			] //groups of documentation to parse

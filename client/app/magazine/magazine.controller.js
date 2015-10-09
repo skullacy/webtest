@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc controller
- * @name mydearnest.controller:MagazineCtrl
+ * @name MagazineCtrl
  * @description
  * 매거진 컨트롤러
  *

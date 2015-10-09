@@ -1,7 +1,7 @@
 'use strict';
 /**
  * @ngdoc controller
- * @name mydearnest.controller:FooterCtrl
+ * @name FooterCtrl
  * @description
  * Footer 컨트롤러
  *
