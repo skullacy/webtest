@@ -17,7 +17,6 @@ module.exports = function (grunt) {
 		cdnify: 'grunt-google-cdn',
 		protractor: 'grunt-protractor-runner',
 		buildcontrol: 'grunt-build-control',
-		ngdocs: 'grunt-ngdocs',
 		replace: 'grunt-replace',
 		awsebtdeploy: 'grunt-awsebtdeploy',
 		aws_s3: 'grunt-aws-s3',
