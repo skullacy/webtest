@@ -101,13 +101,15 @@ module.exports = function(grunt) {
 
 					'.tmp/{app,components}/**/*.js',
 
+					'!.tmp/components/config/config.constant.js',
 					'!{.tmp,<%= yeoman.client %>}{app,components}/**/*.spec.js',
 					'!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.mock.js',
 					'<%= yeoman.client %>/assets/images/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}'
 				],
 				options: {
 					livereload: true
-				}
+				},
+				tasks: ['replace:dev']
 			},
 			express: {
 				files: [
