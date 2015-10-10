@@ -1,5 +1,11 @@
 'use strict';
-
+/**
+ * @ngdoc controller
+ * @name mydearnest.controller:HeaderCtrl
+ * @description
+ * 헤더 컨트롤러
+ *
+ */
 angular.module('mydearnest')
     .controller('HeaderCtrl', ['$scope', function ($scope) {
 		$scope.mainMenu = [

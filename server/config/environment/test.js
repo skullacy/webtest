@@ -1,10 +1,11 @@
 'use strict';
 
-// Test specific configuration
-// ===========================
+/**
+ * @description
+ * Test 모드 개별설정
+ * index.js 참조후, 개별설정이 필요한부분은 해당파일에서 추가설정한다.
+ */
 module.exports = {
-  // MongoDB connection options
-  mongo: {
-    uri: 'mongodb://localhost/mydearnestweb-test'
-  }
+	env: 'test',
+
 };
