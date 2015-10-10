@@ -13,12 +13,13 @@ angular.module('mydearnest', [
 	'ngResource',
 	'ngSanitize',
 	'ui.router',
-	'ui.bootstrap'
+	'ui.bootstrap',
+	'restangular'
 ])
-	.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+	.config(function ($stateProvider, $urlRouterProvider, $locationProvider, RestangularProvider, MdnConfig) {
 
-		$urlRouterProvider
-			.otherwise('/');
-
+		$urlRouterProvider.otherwise('/');
 		$locationProvider.html5Mode(true);
+
+		RestangularProvider.setBaseUrl(MdnConfig.API_URL + '/1.7');
 	});

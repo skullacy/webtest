@@ -8,8 +8,10 @@
  *
  */
 angular.module('mydearnest')
-	.controller('MagazineCtrl', ['$scope', 'MdnConfig', function ($scope, MdnConfig) {
-		$scope.message = 'Hello';
+	.controller('MagazineCtrl', ['$scope', 'MdnConfig', 'Magazine', function ($scope, MdnConfig, Magazine) {
 		$scope.api = MdnConfig.API_URL;
 		$scope.image = MdnConfig.IMAGE_URL;
+
+		console.log(Magazine);
+
 	}]);
