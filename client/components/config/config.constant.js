@@ -19,7 +19,7 @@ angular.module('mydearnest')
 		/**
 		 * @ngdoc property
 		 * @name API_URL
-		 * @propertyOf mydearnest.object:MdnConfig
+		 * @propertyOf MdnConfig
 		 * @description
 		 * 집꾸미기 API Server URL.
 		 */
@@ -28,7 +28,7 @@ angular.module('mydearnest')
 		/**
 		 * @ngdoc property
 		 * @name IMAGE_URL
-		 * @propertyOf mydearnest.object:MdnConfig
+		 * @propertyOf MdnConfig
 		 * @description
 		 * 집꾸미기 Image Server URL.
 		 */

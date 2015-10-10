@@ -13,7 +13,7 @@ module.exports = function(grunt) {
 	grunt.config.merge({
 		express: {
 			options: {
-				port: process.env.PORT || 9000
+				port: process.env.PORT || 3002
 			},
 			dev: {
 				options: {
