@@ -126,9 +126,9 @@ angular.module('mydearnest')
 		 * </pre>
 		 */
 		oImage.prototype.setResizeWidth = function(width) {
-			if(width >= 0) this.resizeWidth = width;
+			if(width >= 0) this.resizeWidth = Math.floor(width);
 			return this;
-		}
+		};
 
 		/**
 		 * @ngdoc method
@@ -146,9 +146,37 @@ angular.module('mydearnest')
 		 * </pre>
 		 */
 		oImage.prototype.setResizeHeight = function(height) {
-			if(height >= 0) this.resizeHeight = height;
+			if(height >= 0) this.resizeHeight = Math.floor(height);
 			return this;
-		}
+		};
+
+		/**
+		 * @ngdoc method
+		 * @name validate
+		 * @methodOf oImage
+		 * @returns {boolean} validation결과
+		 *
+		 * @description
+		 * 유효성 검증.
+		 *
+		 * * img_id는 무조건 존재해야하며, positive number(Integer) type이어야 한다.
+		 * * width, height는 무조건 존재해야하며, number(Integer) type이어야 한다.
+		 */
+		oImage.prototype.validate = function() {
+			//img_id validation
+			if(Number.isInteger(this.img_id) === false) return false;
+			if(this.img_id <= 0) return false;
+
+			//width validation
+			if(Number.isInteger(this.width) === false) return false;
+			if(this.width <= 0) return false;
+
+			//height validation
+			if(Number.isInteger(this.height) === false) return false;
+			if(this.height <= 0) return false;
+
+			return true;
+		};
 
 
 		/**

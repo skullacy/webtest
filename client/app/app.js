@@ -16,7 +16,8 @@ angular.module('mydearnest', [
 	'ui.bootstrap',
 	'restangular'
 ])
-	.config(function ($stateProvider, $urlRouterProvider, $locationProvider, RestangularProvider, MdnConfig) {
+	.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'RestangularProvider', 'MdnConfig',
+		function ($stateProvider, $urlRouterProvider, $locationProvider, RestangularProvider, MdnConfig) {
 
 		/**
 		 * Angular.js 기본설정
@@ -51,4 +52,7 @@ angular.module('mydearnest', [
 		});
 
 
-	});
+	}])
+	.run(['MdnUtil',
+		function(MdnUtil) {
+	}]);
