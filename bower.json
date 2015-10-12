@@ -10,12 +10,13 @@
     "angular-ui-router": "~0.2.15",
     "bootstrap": "~3.1.1",
     "bootstrap-sass-official": "~3.1.1",
+    "crypto-js": "http://crypto-js.googlecode.com/files/CryptoJS%20v3.1.2.zip",
     "es5-shim": "~3.0.1",
     "font-awesome": ">=4.1.0",
     "json3": "~3.3.1",
     "lodash": "~2.4.1",
-    "crypto-js": "http://crypto-js.googlecode.com/files/CryptoJS%20v3.1.2.zip",
-    "restangular": "~1.5.1"
+    "restangular": "~1.5.1",
+    "validator-js": "~4.1.0"
   },
   "devDependencies": {
     "angular-mocks": ">=1.3.*",
