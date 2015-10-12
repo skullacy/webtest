@@ -25,12 +25,22 @@ module.exports = function(grunt) {
 						{
 							id: 'components',
 							title: 'Components',
-							docs: ['client/components/**/*.js', '!client/components/**/*.spec.js', '!client/components/model/**/*.js']
+							docs: [
+								'client/components/**/*.js',
+								'!client/components/**/*.spec.js',
+								'!client/components/model/**/*.js',
+								'!client/components/plugin/**/*.js'
+							]
 						},
 						{
 							id: 'model',
 							title: 'Models',
 							docs: ['client/components/model/**/*.js', '!client/components/model/**/*.spec.js']
+						},
+						{
+							id: 'plugin',
+							title: 'Plugins',
+							docs: ['client/components/plugins/**/*.js', '!client/components/plugins/**/*.spec.js']
 						},
 						{
 							id: 'dependencies',

@@ -27,7 +27,7 @@ angular.module('mydearnest')
 	.factory("oAuthor", function() {
 
 		/**
-		 * Constructor
+		 * @constructor
 		 */
 		function oAuthor(data) {
 
@@ -79,9 +79,11 @@ angular.module('mydearnest')
 		 * Public method
 		 * 프로토타입으로 선언
 		 */
-		oAuthor.prototype.testFunction = function() {
-			return this.testObject;
-		};
+
+		oAuthor.prototype.getImageURL = function() {
+			if(profile_img_id) {
+			}
+		}
 
 		/**
 		 * Static methods

@@ -27,7 +27,7 @@ angular.module('mydearnest')
 	.factory("oUser", function() {
 
 		/**
-		 * Constructor
+		 * @constructor
 		 */
 		function oUser() {
 			this.testObject = 'i am user';

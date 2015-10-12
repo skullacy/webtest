@@ -22,7 +22,7 @@ angular.module('mydearnest')
 	}])
 	.factory("oMagazine", function(oAuthor, oImage) {
 		/**
-		 * Constructor
+		 * @constructor
 		 */
 		function oMagazine(data) {
 			//console.log('oMagazine Constructor');

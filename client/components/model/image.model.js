@@ -3,6 +3,8 @@
 /**
  * @ngdocs Object
  * @name oImage
+ * @requires MdnConfig
+ * @requires MdnImageBuilder
  * @description
  * 이미지 모델.
  *
@@ -17,10 +19,10 @@ angular.module('mydearnest')
 		//RestangularProvider.addElementTransformer('magazines', false, function(element) {
 		//});
 	}])
-	.factory("oImage",['MdnConfig', function(MdnConfig) {
+	.factory("oImage",['MdnConfig', 'MdnImageBuilder', function(MdnConfig, MdnImageBuilder) {
 
 		/**
-		 * Constructor
+		 * @constructor
 		 */
 		function oImage(data) {
 
@@ -101,13 +103,15 @@ angular.module('mydearnest')
 		 * @returns {string} 이미지 URL (프로토콜 제외)
 		 * @description
 		 * 해당 이미지를 불러오기위한 url을 호출.
+		 * {@link MdnImageBuilder MdnImageBuilder}를 이용하여 이미지 URL생성.
 		 */
 		oImage.prototype.getImageURL = function() {
-			var resizeString = '/';
+			var builder = new MdnImageBuilder();
 			if(this.resizeWidth > 0 || this.resizeHeight > 0) {
-				resizeString += this.resizeWidth + 'x' + this.resizeHeight + '/';
+				builder.resize(this.resizeWidth, this.resizeHeight);
 			}
-			return MdnConfig.IMAGE_URL + '/unsafe' + resizeString + this.img_id + '/' + this.img_id;
+			builder.setImagePath(this.img_id + '/' + this.img_id)
+			return builder.buildUrl();
 		};
 
 		/**
