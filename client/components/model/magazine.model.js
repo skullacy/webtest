@@ -3,9 +3,12 @@
 /**
  * @ngdocs Object
  * @name oMagazine
- * @requires oUser
+ * @requires oAuthor
+ * @requires oImage
  * @description
  * 매거진 모델.
+ *
+ * * API Wiki: {@link https://github.com/Osquare/Mydearnest-API/wiki/v1.7-Magazine#data API 매거진모델 명세}
  */
 angular.module('mydearnest')
 	.run(['Restangular', 'oMagazine', function(RestangularProvider, oMagazine) {
@@ -17,12 +20,14 @@ angular.module('mydearnest')
 			return oMagazine.build(element);
 		});
 	}])
-	.factory("oMagazine", function(oUser) {
+	.factory("oMagazine", function(oAuthor, oImage) {
 
 		/**
 		 * Constructor
 		 */
 		function oMagazine(data) {
+			console.log('oMagazine Constructor');
+			console.log(data);
 
 			/**
 			 * @ngdoc property
@@ -30,20 +35,41 @@ angular.module('mydearnest')
 			 * @propertyOf oMagazine
 			 * @description
 			 * 매거진 PK
+			 *
+			 * @restriction notnull
 			 */
 			this.mag_id = data.mag_id;
 
 			/**
 			 * @ngdoc property
 			 * @name author
-			 * @type oUser
+			 * @type oAuthor
 			 * @propertyOf oMagazine
 			 * @description
 			 * 작성자 정보
 			 */
-			this.author = oUser.build(data.author);
+			this.author = oAuthor.build(data.author);
+
+			/**
+			 * @ngdoc property
+			 * @name title
+			 * @type {String}
+			 * @propertyOf oMagazine
+			 * @description
+			 * 매거진 제목
+			 */
 			this.title = data.title;
-			this.title_img = data.title_img;
+
+			/**
+			 * @ngdoc property
+			 * @name title_img
+			 * @type oImage
+			 * @propertyOf oMagazine
+			 * @description
+			 * 매거진 제목 이미지 Object
+			 */
+			this.title_img = oImage.build(data.title_img);
+
 			this.da = data.da;
 			this.da_idx = data.da_idx;
 			this.ref = data.ref;

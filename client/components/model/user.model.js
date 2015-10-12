@@ -4,6 +4,11 @@
  * @name oUser
  * @description
  * 유저 모델.
+ *
+ * 유저의 모든 정보를 담을 수 있는 모델이다.
+ * {@link oAuthor oAuthor}모델은 이 모델의 `부분집합`과 같은 개념.
+ *
+ * * API Wiki: {@link https://github.com/Osquare/Mydearnest-API/wiki/v1.7-User#data API 유저모델 명세}
  */
 angular.module('mydearnest')
 	.run(['Restangular', 'oUser', function(RestangularProvider, oUser) {
