@@ -3,7 +3,6 @@
 /**
  * @ngdocs Object
  * @name oImage
- * @requires MdnConfig
  * @requires MdnImageBuilder
  * @description
  * 이미지 모델.
@@ -19,7 +18,7 @@ angular.module('mydearnest')
 		//RestangularProvider.addElementTransformer('magazines', false, function(element) {
 		//});
 	}])
-	.factory("oImage",['MdnConfig', 'MdnImageBuilder', function(MdnConfig, MdnImageBuilder) {
+	.factory("oImage",['MdnImageBuilder', function(MdnImageBuilder) {
 
 		/**
 		 * @constructor
@@ -110,7 +109,7 @@ angular.module('mydearnest')
 			if(this.resizeWidth > 0 || this.resizeHeight > 0) {
 				builder.resize(this.resizeWidth, this.resizeHeight);
 			}
-			builder.setImagePath(this.img_id + '/' + this.img_id)
+			builder.setS3ImagePath(this.img_id);
 			return builder.buildUrl();
 		};
 
@@ -167,17 +166,17 @@ angular.module('mydearnest')
 		 * * width, height는 무조건 존재해야하며, number(Integer) type이어야 한다.
 		 */
 		oImage.prototype.validate = function() {
-			//img_id validation
-			if(Number.isInteger(this.img_id) === false) return false;
-			if(this.img_id <= 0) return false;
+			////img_id validation
+			var img_id_str = validator.toString(this.img_id);
+			if(!validator.isInt(img_id_str, {min : 1})) return false;
 
 			//width validation
-			if(Number.isInteger(this.width) === false) return false;
-			if(this.width <= 0) return false;
+			var width_str = validator.toString(this.width);
+			if(!validator.isInt(width_str, {min : 1})) return false;
 
 			//height validation
-			if(Number.isInteger(this.height) === false) return false;
-			if(this.height <= 0) return false;
+			var height_str = validator.toString(this.height);
+			if(!validator.isInt(height_str, {min : 1})) return false;
 
 			return true;
 		};
