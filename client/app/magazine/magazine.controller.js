@@ -8,13 +8,8 @@
  *
  */
 angular.module('mydearnest')
-	.controller('MagazineCtrl', ['$scope', 'MdnConfig', 'MagazineSvc', function ($scope, MdnConfig, MagazineSvc) {
-		$scope.api = MdnConfig.API_URL;
-		$scope.image = MdnConfig.IMAGE_URL;
-
+	.controller('MagazineCtrl', ['$scope', 'MagazineSvc', function ($scope, MagazineSvc) {
 		MagazineSvc.getList().then(function(magazine) {
-			console.log(magazine);
+			$scope.magazineList = magazine;
 		});
-		//console.log(Restangular.one('magazines').get());
-
 	}]);

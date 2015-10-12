@@ -103,11 +103,11 @@ angular.module('mydearnest')
 		 * 해당 이미지를 불러오기위한 url을 호출.
 		 */
 		oImage.prototype.getImageURL = function() {
-			var resizeString = '';
+			var resizeString = '/';
 			if(this.resizeWidth > 0 || this.resizeHeight > 0) {
-				resizeString = resizeWidth + 'x' + resizeHeight;
+				resizeString += this.resizeWidth + 'x' + this.resizeHeight + '/';
 			}
-			return MdnConfig.IMAGE_URL + '/unsafe' + resizeString + '/' + this.img_id + '/' + this.img_id;
+			return MdnConfig.IMAGE_URL + '/unsafe' + resizeString + this.img_id + '/' + this.img_id;
 		};
 
 		/**
@@ -134,7 +134,7 @@ angular.module('mydearnest')
 		 * @ngdoc method
 		 * @name setResizeHeight
 		 * @methodOf oImage
-		 * @param {number} height 이미지 가로
+		 * @param {number} height 이미지 세로
 		 * @returns {oImage}
 		 * @description
 		 * getImageURL() 호출전 해당 메소드를 이용하여 리사이징될 이미지를 세팅할 수 있다.

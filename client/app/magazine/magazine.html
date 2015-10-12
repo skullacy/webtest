@@ -1,5 +1,5 @@
 <div class="col-md-12">
-This is the magazine view.
-	{{api}}
-	{{image}}
+	<div ng-repeat = "magazine in magazineList">
+		<img ng-src="http://{{magazine.getTitleImageObj().setResizeWidth(300).getImageURL()}}" />
+	</div>
 </div>

@@ -234,6 +234,21 @@ angular.module('mydearnest')
 		 * Public method
 		 * 프로토타입으로 선언
 		 */
+
+		/**
+		 * @ngdoc method
+		 * @name getTitleImageObj
+		 * @methodOf oMagazine
+		 * @description
+		 * 해당 메거진 오브젝트 내부의 타이틀 {@link oImage oImage}를 리턴.
+		 *
+		 * @returns {oImage}
+		 */
+		oMagazine.prototype.getTitleImageObj = function() {
+			return this.title_img;
+		};
+
+
 		//oMagazine.prototype.testFunction = function() {
 		//	return this.testObject;
 		//};

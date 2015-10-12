@@ -47,7 +47,7 @@ angular.module('mydearnest')
 			 * @ngdoc property
 			 * @name nickname
 			 * @type {string}
-			 * @propertyOf oMagazine
+			 * @propertyOf oAuthor
 			 * @description
 			 * 작성자 닉네임
 			 */
@@ -57,7 +57,7 @@ angular.module('mydearnest')
 			 * @ngdoc property
 			 * @name profile_img_id
 			 * @type {long}
-			 * @propertyOf oMagazine
+			 * @propertyOf oAuthor
 			 * @description
 			 * 프로필 이미지 일련번호
 			 */
@@ -67,7 +67,7 @@ angular.module('mydearnest')
 			 * @ngdoc property
 			 * @name profile_img_link
 			 * @type {string}
-			 * @propertyOf oMagazine
+			 * @propertyOf oAuthor
 			 * @description
 			 * 소셜 (Kakao, Facebook etc)등을 통해 가입했을경우 `가입했을 당시`의 프로필이미지 링크주소.
 			 */

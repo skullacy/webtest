@@ -8,6 +8,6 @@
  *
  */
 angular.module('mydearnest')
-  .controller('StoryCtrl', function ($scope) {
-    $scope.message = 'Hello';
-  });
+	.controller('StoryCtrl', function ($scope) {
+		$scope.message = 'Hello';
+	});
