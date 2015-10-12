@@ -65,6 +65,19 @@ angular.module('mydearnest')
                 return this;
             },
 
+			/**
+			 * @ngdoc method
+			 * @name setS3ImagePath
+			 * @param {number} image_id ImagePK
+			 * @returns {MdnImageBuilder}
+			 * @description
+			 * AWS S3에 저장된 이미지를 쉽게 불러오기 위한 메소드.
+			 * image_id -> image_id/image_id로 변경하여 세팅한다.
+			 */
+			setS3ImagePath: function(image_id) {
+				return this.setImagePath(image_id + '/' + image_id)
+			},
+
             /**
 			 * @ngdoc method
 			 * @name getOperationPath
