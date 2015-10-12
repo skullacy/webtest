@@ -2,6 +2,7 @@
 /**
  * @ngdocs Object
  * @name oAuthor
+ * @requires MdnImageBuilder
  * @description
  * 프로필 모델.
  *
@@ -24,7 +25,7 @@ angular.module('mydearnest')
 		//	//return element;
 		//});
 	}])
-	.factory("oAuthor", function() {
+	.factory("oAuthor",['MdnImageBuilder', function(MdnImageBuilder) {
 
 		/**
 		 * @constructor
@@ -80,9 +81,55 @@ angular.module('mydearnest')
 		 * 프로토타입으로 선언
 		 */
 
+		/**
+		 * @ngdoc method
+		 * @methodOf oAuthor
+		 * @name getImageURL
+		 * @description
+		 * 프로필 이미지의 http주소를 불러온다.
+		 *
+		 * 1. 서비스 내부에 업로드한 프로필이 있을경우 `최우선` 반환.
+		 * 2. 소셜계정을 통해 가입하면서 가져온 프로필이 있고, 1번조건을 만족하지 않을경우만 반환.
+		 *
+		 * @returns {string}
+		 */
 		oAuthor.prototype.getImageURL = function() {
-			if(profile_img_id) {
+			var url = '';
+			if(this.profile_img_id) {
+				var builder = new MdnImageBuilder();
+				builder.setS3ImagePath(this.profile_img_id);
+				url = builder.buildUrl()
+			} else if(this.profile_img_link) {
+				url = this.profile_img_link;
 			}
+			return url;
+		};
+
+		/**
+		 * @ngdoc method
+		 * @methodOf oAuthor
+		 * @name validate
+		 * @description
+		 * oAuthor 모델의 유효성 검증.
+		 *
+		 * * usr_id는 양의정수이며 `필수`.
+		 * * nickname은 문자열이며 `필수`.
+		 * * profile_img_id는 양의정수이며 `선택`.
+		 * * profile_img_link는 문자열이며 `선택`.
+		 *
+		 * @returns {boolean}
+		 */
+		oAuthor.prototype.validate = function() {
+			var usr_id_str = validator.toString(this.usr_id);
+			if(!validator.isInt(usr_id_str, {min: 1})) return false;
+
+			var nickname_str = validator.toString(this.nickname);
+			if(validator.isNull(nickname_str)) return false;
+
+			var profile_img_id_str = validator.toString(this.profile_img_id);
+			if(!validator.isNull(profile_img_id_str) && !validator.isInt(profile_img_id_str, {min : 1})) return false;
+
+			return true;
 		}
 
 		/**
@@ -91,10 +138,10 @@ angular.module('mydearnest')
 		 */
 		oAuthor.build = function(data) {
 			return new oAuthor(data);
-		}
+		};
 
 		/**
 		 * oAuthor Constructor 리턴
 		 */
 		return oAuthor;
-	});
+	}]);
