@@ -67,6 +67,7 @@ angular.module('mydearnest')
 
 			/**
 			 * @ngdoc method
+			 * @methodOf MdnImageBuilder
 			 * @name setS3ImagePath
 			 * @param {number} image_id ImagePK
 			 * @returns {MdnImageBuilder}

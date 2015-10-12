@@ -112,6 +112,8 @@ angular.module('mydearnest')
 		 * @description
 		 * oAuthor 모델의 유효성 검증.
 		 *
+		 * 사용 라이브러리 : {@link https://github.com/chriso/validator.js#validators validator-js} 참고
+		 *
 		 * * usr_id는 양의정수이며 `필수`.
 		 * * nickname은 문자열이며 `필수`.
 		 * * profile_img_id는 양의정수이며 `선택`.

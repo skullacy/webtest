@@ -111,13 +111,13 @@ describe('Model: oAuthor', function () {
 
 	}));
 
-	it('profile_image_id가 있을경우, 무조건 최우선적으로 imageserver주소를 리턴한다.', inject(function(oAuthor) {
+	it('profile_image_id가 있을경우, 무조건 최우선적으로 imageserver주소를 리턴한다.', inject(function(oAuthor, MdnConfig) {
 		var author1 = oAuthor.build({
 			usr_id: 1251215611,
 			nickname: 'aslgjasfasdfa',
 			profile_img_id: 2311313
 		});
-		expect(author1.getImageURL()).toBe('@@MDN_IMAGE_SERVER/unsafe/2311313/2311313');
+		expect(author1.getImageURL()).toBe(MdnConfig.IMAGE_URL + '/unsafe/2311313/2311313');
 
 		var author2 = oAuthor.build({
 			usr_id: 1251215611,
@@ -125,7 +125,7 @@ describe('Model: oAuthor', function () {
 			profile_img_id: 2311313,
 			profile_img_link: 'http://www.naver.com'
 		});
-		expect(author2.getImageURL()).toBe('@@MDN_IMAGE_SERVER/unsafe/2311313/2311313');
+		expect(author2.getImageURL()).toBe(MdnConfig.IMAGE_URL + '/unsafe/2311313/2311313');
 
 		var author3 = oAuthor.build({
 			usr_id: 1251215611,

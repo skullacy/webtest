@@ -1,5 +1,6 @@
 <div class="col-md-12">
 	<div ng-repeat = "magazine in magazineList">
-		<img ng-src="http://{{magazine.getTitleImageObj().setResizeWidth(300).getImageURL()}}" />
+		<img ng-src="{{magazine.getTitleImageObj().setResizeWidth(300).getImageURL()}}" />
+		<img ng-src="{{magazine.author.getImageURL()}}" />
 	</div>
 </div>

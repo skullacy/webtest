@@ -162,6 +162,8 @@ angular.module('mydearnest')
 		 * @description
 		 * 유효성 검증.
 		 *
+		 * 사용 라이브러리 : {@link https://github.com/chriso/validator.js#validators validator-js} 참고
+		 *
 		 * * img_id는 무조건 존재해야하며, positive number(Integer) type이어야 한다.
 		 * * width, height는 무조건 존재해야하며, number(Integer) type이어야 한다.
 		 */

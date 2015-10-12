@@ -32,7 +32,7 @@ angular.module('mydearnest', [
 		 * 기본 URL 설정
 		 * MdnConfig에서 API Address를 가져온다.
 		 */
-		RestangularProvider.setBaseUrl('http://' + MdnConfig.API_URL + '/1.7');
+		RestangularProvider.setBaseUrl(MdnConfig.API_URL + '/1.7');
 
 
 		/**

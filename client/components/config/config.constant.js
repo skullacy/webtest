@@ -5,6 +5,8 @@
  * @description
  * App Config을 정의한다.
  *
+ * 현재 `http://`와 같은 스키마가 모든 URL에 빠져있음. 넣을 방법을 찾아야함.
+ *
  * @example
  * <pre>
  * 	angular.module('mydearnest')
@@ -23,7 +25,7 @@ angular.module('mydearnest')
 		 * @description
 		 * 집꾸미기 API Server URL.
 		 */
-		API_URL: '@@MDN_API_SERVER',
+		API_URL: 'http://@@MDN_API_SERVER',
 
 		/**
 		 * @ngdoc property
@@ -32,5 +34,5 @@ angular.module('mydearnest')
 		 * @description
 		 * 집꾸미기 Image Server URL.
 		 */
-		IMAGE_URL: '@@MDN_IMAGE_SERVER',
+		IMAGE_URL: 'http://@@MDN_IMAGE_SERVER',
 	});
