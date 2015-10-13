@@ -50,11 +50,19 @@ var defaultConfig = {
 	}
 };
 
+// Local Machine 전용 콘픽
+// 없으면 그냥 빈 오브젝트로 만들자.
+var localConfig;
+try {
+	localConfig = require('../local.env');
+} catch(e) {
+	localConfig = {};
+}
+
 // NODE_ENV에 따라 Config Object 리턴.
 // ================================
 var result = {};
 result.production = _.merge({}, defaultConfig, require('./production.js') || {});
-result.development = _.merge({}, defaultConfig, require('./development.js') || {}, require('../local.env'));
-result.test = _.merge({}, defaultConfig, require('./test.js') || {}, require('../local.env'));
-
+result.development = _.merge({}, defaultConfig, require('./development.js') || {}, localConfig);
+result.test = _.merge({}, defaultConfig, require('./test.js') || {}, localConfig);
 module.exports = result;
