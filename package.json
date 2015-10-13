@@ -102,7 +102,7 @@
   },
   "scripts": {
     "start": "node server/app.js",
-    "test": "grunt test",
+    "test": "grunt test:client",
     "update-webdriver": "node node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update"
   },
   "private": true
