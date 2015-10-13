@@ -1,9 +1,16 @@
 'use strict';
 
 module.exports = function(grunt) {
+	var awsJSON;
+	try {
+		awsJSON = grunt.file.readJSON('./server/config/aws/aws.env.json');
+	} catch(e) {
+		awsJSON = {};
+	}
+
 	// Config
 	grunt.config.merge({
-		aws: grunt.file.readJSON('./server/config/aws/aws.env.json'),
+		aws: awsJSON,
 		aws_s3: {
 			options: {
 				accessKeyId: '<%= aws.accessKeyId %>',
@@ -12,31 +19,17 @@ module.exports = function(grunt) {
 				uploadConcurrency: 5,
 				downloadConcurrency: 5
 			},
-			staging: {
+			document: {
 				options: {
-					bucket: '<%= aws.s3.configBucket %>',
-					access: 'private'
-				},
-				files: [
-					{
-						action: 'download',
-						dest: 'code/',
-						cwd: './server/config/aws/code/',
-						exclude: ['**/*api*', '**/*image*'],
-						differential: true
-					}
-				]
-			},
-			production: {
-				options: {
-					bucket: '<%= aws.s3.configBucket %>',
-					access: 'private'
+					region: 'ap-northeast-1',
+					bucket: 'mydearnest-cdn',
+					access: 'public-read'
 				},
 				files: [
 					{
 						action: 'upload',
-						cwd: './server/config/aws/code/',
-						dest: 'code/',
+						cwd: './docs/',
+						dest: 'MwsDocs/',
 						src: ['**'],
 						expand: true
 					}

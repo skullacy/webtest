@@ -1,9 +1,11 @@
 'use strict';
 /**
  * @ngdoc object
- * @name mydearnest.object:MdnConfig
+ * @name MdnConfig
  * @description
  * App Config을 정의한다.
+ *
+ * 현재 `http://`와 같은 스키마가 모든 URL에 빠져있음. 넣을 방법을 찾아야함.
  *
  * @example
  * <pre>
@@ -19,18 +21,18 @@ angular.module('mydearnest')
 		/**
 		 * @ngdoc property
 		 * @name API_URL
-		 * @propertyOf mydearnest.object:MdnConfig
+		 * @propertyOf MdnConfig
 		 * @description
 		 * 집꾸미기 API Server URL.
 		 */
-		API_URL: '@@MDN_API_SERVER',
+		API_URL: 'http://@@MDN_API_SERVER',
 
 		/**
 		 * @ngdoc property
 		 * @name IMAGE_URL
-		 * @propertyOf mydearnest.object:MdnConfig
+		 * @propertyOf MdnConfig
 		 * @description
 		 * 집꾸미기 Image Server URL.
 		 */
-		IMAGE_URL: '@@MDN_IMAGE_SERVER',
+		IMAGE_URL: 'http://@@MDN_IMAGE_SERVER',
 	});

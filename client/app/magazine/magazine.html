@@ -1,5 +1,7 @@
-<div class="col-md-12">
-This is the magazine view.
-	{{api}}
-	{{image}}
+<div class="container">
+	<ul class="dynamic-grid" angular-grid="magazineList" grid-width="300" gutter-size="10" angular-grid-id="gallery" refresh-on-img-load="false" >
+		<li data-ng-repeat="magazine in magazineList" class="grid">
+			<img src="{{magazine.getTitleImageObj().setResizeWidth(300).getImageURL()}}" class="grid-img" data-actual-width = "{{magazine.getTitleImageObj().width}}"  data-actual-height="{{magazine.getTitleImageObj().height}}" />
+		</li>
+	</ul>
 </div>

@@ -2,12 +2,15 @@
 
 /**
  * @ngdoc controller
- * @name mydearnest.controller:InteriorpicCtrl
+ * @name InteriorpicCtrl
  * @description
  * 인테리어 사진 컨트롤러
  *
  */
 angular.module('mydearnest')
-  .controller('InteriorpicCtrl', function ($scope) {
-    $scope.message = 'Hello';
-  });
+	.controller('InteriorpicCtrl', ['$scope', 'MagazineSvc',
+		function ($scope, MagazineSvc) {
+			MagazineSvc.getList().then(function(magazine) {
+				$scope.itemList = magazine;
+			});
+		}]);

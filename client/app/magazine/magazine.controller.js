@@ -2,14 +2,19 @@
 
 /**
  * @ngdoc controller
- * @name mydearnest.controller:MagazineCtrl
+ * @name MagazineCtrl
  * @description
  * 매거진 컨트롤러
  *
  */
 angular.module('mydearnest')
-	.controller('MagazineCtrl', ['$scope', 'MdnConfig', function ($scope, MdnConfig) {
-		$scope.message = 'Hello';
-		$scope.api = MdnConfig.API_URL;
-		$scope.image = MdnConfig.IMAGE_URL;
-	}]);
+	.controller('MagazineCtrl', ['$scope', 'MagazineSvc', 'angularGridInstance',
+		function ($scope, MagazineSvc, angularGridInstance) {
+
+
+			MagazineSvc.getList().then(function(magazine) {
+				$scope.magazineList = magazine;
+				console.log('getMagazines');
+				console.log(angularGridInstance.gallery);
+			});
+		}]);
