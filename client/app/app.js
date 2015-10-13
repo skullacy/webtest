@@ -14,7 +14,8 @@ angular.module('mydearnest', [
 	'ngSanitize',
 	'ui.router',
 	'ui.bootstrap',
-	'restangular'
+	'restangular',
+	'angularGrid'
 ])
 	.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'RestangularProvider', 'MdnConfig',
 		function ($stateProvider, $urlRouterProvider, $locationProvider, RestangularProvider, MdnConfig) {
