@@ -5,5 +5,5 @@ node_js:
 before_script:
   - npm install -g bower grunt-cli
   - gem install sass
-  - bower install
+  - bower install -F
 services: mongodb
