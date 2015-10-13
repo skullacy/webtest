@@ -1,3 +1,10 @@
-<div class="col-md-12">
-This is the interiorpic view.
+<div class="container interior-pic">
+	<ul class="dynamic-grid" angular-grid="itemList" grid-width="320" gutter-size="10"
+		angular-grid-id="interiorPic" refresh-on-img-load="true" >
+		<li data-ng-repeat="item in itemList" class="grid">
+			<img src="{{::item.getTitleImageObj().setResizeWidth(640).getImageURL()}}" class="grid-img"
+				 data-actual-width = "{{::item.getTitleImageObj().width}}"
+				 data-actual-height ="{{::item.getTitleImageObj().height}}" />
+		</li>
+	</ul>
 </div>
