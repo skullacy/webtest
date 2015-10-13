@@ -8,6 +8,7 @@
 
 ## Project Documentation
 docs
+downloaded
 
 node_modules
 public
@@ -23,4 +24,6 @@ dist
 npm-debug.log
 ## Project Package
 *.zip
+
+
 

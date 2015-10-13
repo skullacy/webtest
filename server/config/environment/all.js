@@ -1,5 +1,7 @@
 'use strict';
 /**
+ * @ngdocs interface
+ * @name all.js
  * @description
  * Config Container.
  * node.js 환경별 설정에 따른 모든 Config을 갖고있음.
@@ -18,7 +20,7 @@ var defaultConfig = {
 	root: path.normalize(__dirname + '/../../..'),
 
 	// Server port
-	port: process.env.PORT || 9000,
+	port: process.env.PORT || 3001,
 
 	// Server IP
 	ip: process.env.IP || '0.0.0.0',

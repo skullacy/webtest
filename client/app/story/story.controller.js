@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc controller
- * @name mydearnest.controller:StoryCtrl
+ * @name StoryCtrl
  * @description
  * 집이야기 컨트롤러
  *
  */
 angular.module('mydearnest')
-  .controller('StoryCtrl', function ($scope) {
-    $scope.message = 'Hello';
-  });
+	.controller('StoryCtrl', function ($scope) {
+		$scope.message = 'Hello';
+	});

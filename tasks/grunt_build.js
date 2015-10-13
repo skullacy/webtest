@@ -13,7 +13,7 @@ module.exports = function(grunt) {
 	grunt.config.merge({
 		express: {
 			options: {
-				port: process.env.PORT || 9000
+				port: process.env.PORT || 3002
 			},
 			dev: {
 				options: {
@@ -527,7 +527,7 @@ module.exports = function(grunt) {
 
 							'!{.tmp,<%= yeoman.client %>}/app/app.js',
 							'!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.spec.js',
-							'!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.mock.js'
+							'!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.mock.js',
 						]
 					]
 				}
