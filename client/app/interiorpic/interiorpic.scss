@@ -1,0 +1,63 @@
+.container.interior-pic {
+
+	.dynamic-grid {
+		position: relative;
+		display: none;
+
+		&.angular-grid {
+			display: block;
+		}
+	}
+
+	.grid {
+		position: absolute;
+		list-style: none;
+		background: #ffffff;;
+		box-sizing: border-box;
+		-webkit-transition: all 400ms ease;
+		transition: all 400ms ease;
+		overflow: hidden;
+
+		&.ng-leave {
+			-webkit-transition: all ease 400ms;
+			transition: all ease 400ms;
+
+			&.ng-leave-active {
+				-webkit-transform: scale(0.5);
+				transform: scale(0.5);
+				opacity: 0;
+			}
+		}
+
+		&.ng-enter {
+			-webkit-transition: all ease 400ms;
+			transition: all ease 400ms;
+			-webkit-transition-delay: 500ms;
+			transition-delay: 500ms;
+			-webkit-transform: scale(0.5);
+			transform: scale(0.5);
+			opacity: 0;
+
+			&.ng-enter-active {
+				-webkit-transform: scale(1);
+				transform: scale(1);
+				opacity: 1;
+			}
+		}
+	}
+
+	.grid-img {
+		width: 100%;
+		vertical-align: middle;
+		background-color: #fff;
+		opacity: 0;
+		visibility: hidden;
+
+		&.img-loaded {
+			visibility: visible;
+			opacity: 1;
+		}
+	}
+}
+
+

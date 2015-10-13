@@ -8,6 +8,9 @@
  *
  */
 angular.module('mydearnest')
-  .controller('InteriorpicCtrl', function ($scope) {
-    $scope.message = 'Hello';
-  });
+	.controller('InteriorpicCtrl', ['$scope', 'MagazineSvc',
+		function ($scope, MagazineSvc) {
+			MagazineSvc.getList().then(function(magazine) {
+				$scope.itemList = magazine;
+			});
+		}]);
