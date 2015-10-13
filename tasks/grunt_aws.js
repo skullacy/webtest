@@ -1,9 +1,16 @@
 'use strict';
 
 module.exports = function(grunt) {
+	var awsJSON;
+	try {
+		awsJSON = grunt.file.readJSON('./server/config/aws/aws.env.json');
+	} catch(e) {
+		awsJSON = {};
+	}
+
 	// Config
 	grunt.config.merge({
-		aws: grunt.file.readJSON('./server/config/aws/aws.env.json'),
+		aws: awsJSON,
 		aws_s3: {
 			options: {
 				accessKeyId: '<%= aws.accessKeyId %>',
