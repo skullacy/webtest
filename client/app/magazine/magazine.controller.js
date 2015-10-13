@@ -8,13 +8,9 @@
  *
  */
 angular.module('mydearnest')
-	.controller('MagazineCtrl', ['$scope', 'MagazineSvc', 'angularGridInstance',
-		function ($scope, MagazineSvc, angularGridInstance) {
-
-
+	.controller('MagazineCtrl', ['$scope', 'MagazineSvc',
+		function ($scope, MagazineSvc) {
 			MagazineSvc.getList().then(function(magazine) {
-				$scope.magazineList = magazine;
-				console.log('getMagazines');
-				console.log(angularGridInstance.gallery);
+				$scope.itemList = magazine;
 			});
 		}]);
