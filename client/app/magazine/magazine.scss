@@ -1,0 +1,22 @@
+.container.magazine {
+
+	.grid {
+		@extend .col-lg-4;
+		@extend .col-md-4;
+		@extend .col-sm-6;
+		@extend .col-xs-12;
+
+		list-style: none;
+		box-sizing: border-box;
+		-webkit-transition: all 400ms ease;
+		transition: all 400ms ease;
+		overflow: hidden;
+
+		&.loaded {
+			visibility: visible;
+			opacity: 1;
+		}
+	}
+}
+
+

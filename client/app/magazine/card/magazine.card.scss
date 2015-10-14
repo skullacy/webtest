@@ -1,0 +1,35 @@
+.magazine-card {
+	$magazine-grid-width-max: $screen-xs-min;
+	$magazine-grid-height-max: $magazine-grid-width-max * 1.0;
+
+	$profile-image-size: 30px;
+
+	width:auto;
+	min-width: $magazine-grid-width-max * 0.66;
+	max-width: $magazine-grid-width-max;
+
+	//그리드가 한줄에 하나씩 나올때부터, 컨테이너 내부 가운데정렬.
+	//한줄에 하나 이상씩일경우는 사이별 마진 추가.
+	@extend .center-block;
+	@media (min-width: $screen-sm-min) {
+		margin: 6px;
+	}
+
+	.caption {
+		min-height: 130px;
+
+		.title {
+			@extend .text-center;
+		}
+
+		.profile-image {
+			@extend .img-circle;
+			width: $profile-image-size;
+			height: $profile-image-size;
+			margin: {
+				left: 10px;
+				right: 10px;
+			}
+		}
+	}
+}

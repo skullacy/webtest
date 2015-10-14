@@ -1,0 +1,12 @@
+<a class="magazine-card" href="#">
+	<div class="thumbnail">
+		<img class="card-img"
+			 ng-src="{{::object.getTitleImageObj().setResizeWidth(imageSize).setResizeHeight(imageSize * 0.6).
+			 getImageURL()}}" />
+
+		<div class="caption">
+			<h4 class="title" ng-bind-html="object.getTitleText()"></h4>
+			<h5><img class="profile-image" ng-src="{{object.author.getImageURL()}}" />{{object.author.nickname}}</h5>
+		</div>
+	</div>
+</a>
