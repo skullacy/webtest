@@ -248,6 +248,21 @@ angular.module('mydearnest')
 			return this.title_img;
 		};
 
+		/**
+		 * @ngdoc method
+		 * @name getTitleText
+		 * @methodOf oMagazine
+		 * @description
+		 * 타이틀 텍스트를 가져온다.
+		 * html에서는 개행문자를 인식하지 않기때문에
+		 * 해당 메소드를 통해서 개행문자는 <br>로 치환 후 리턴된다.
+		 *
+		 * @returns {String}
+		 */
+		oMagazine.prototype.getTitleText = function() {
+			return this.title.replace(/\n/g, "<br />");
+		};
+
 
 		//oMagazine.prototype.testFunction = function() {
 		//	return this.testObject;
